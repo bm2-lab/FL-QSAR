@@ -193,7 +193,7 @@ models, optimizers, _ = define_network(
     cli_num, lr_=args.lr, momentum_=args.momentum, weight_decay_=args.weight_decay)
 fl_models, fl_optimizers, params = define_network(
     cli_num, lr_=args.lr, momentum_=args.momentum, weight_decay_=args.weight_decay)
-with open('result.txt', 'w') as f:
+with open('./result/result.txt', 'w') as f:
     for n in range(cli_num):
         max_r_square = 0
         for _ in range(epoch):
@@ -202,14 +202,14 @@ with open('result.txt', 'w') as f:
             if r_square > max_r_square:
                 max_r_square = r_square
                 torch.save(models[n].state_dict(),
-                           './model/model_' + str(n + 1) + '.pkl')
+                           './result/model_' + str(n + 1) + '.pkl')
         f.write('client_' + str(n + 1) +
-                ' max_r_square: ' + str(max_r_square) + '\n')
+                ' max_r_square: ' + str(round(max_r_square, 3)) + '\n')
     fl_max_r_square = 0
     for _ in range(epoch):
         fl_models = fl_train(train_sets, fl_models, fl_optimizers, params)
         fl_r_square = test(test_x, test_y, fl_models[0])
         if fl_r_square > fl_max_r_square:
             fl_max_r_square = fl_r_square
-            torch.save(fl_models[0].state_dict(), './model/fl_model.pkl')
-    f.write('FL max_r_square: ' + str(fl_max_r_square) + '\n')
+            torch.save(fl_models[0].state_dict(), './result/fl_model.pkl')
+    f.write('FL max_r_square: ' + str(round(fl_max_r_square, 3)) + '\n')
