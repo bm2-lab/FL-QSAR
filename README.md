@@ -7,7 +7,7 @@ Our study has demonstrated the effectiveness of applying HFL in QSAR modeling. T
 ----
 Dataset is randomly separated into subsets and distributed them to clients, which were then regarded as private data. Clients have the same amount of training data with chemical structure descriptors as features and bioactivities as labels and the same testing data without labels. Suppose that there are n instances in all available training data. Then a client owns a random subset of training data with 1/x · n instances, where x stands for the number of clients. As shown in the figures below, let us take the simulation for 3 clients with and without HFL as the example to illustrate the process of simulation.
 __The simulation of 3 clients with and without HFL__
-![](https://github.com/bm2-lab/FL-QSAR/blob/master/images/simulation.jpg)  
+![](https://github.com/bm2-lab/FL-QSAR/blob/master/images/simulation.pdf)  
 __The workflow of HFL__  
 ![](https://github.com/bm2-lab/FL-QSAR/blob/master/images/HFL.jpg)
 ## Install
