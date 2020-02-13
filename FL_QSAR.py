@@ -18,7 +18,6 @@ class Setting:
         self.momentum = 0.9
         self.weight_decay = 0.0001
         self.batch_size = 128
-        self.seed = 1
 
 
 class Net(nn.Module):
@@ -152,6 +151,7 @@ def fl_train(train_sets, fl_models, fl_optimizers, params):
 
 
 def train(dataloader, model, optimizer):
+    model.train()
     for batch_idx, (data, target) in enumerate(dataloader):
         optimizer.zero_grad()
         data, target = data.to(device), target.to(device)
@@ -163,6 +163,7 @@ def train(dataloader, model, optimizer):
 
 
 def test(test_x, test_y, model):
+    model.eval()
     with torch.no_grad():
         output = model(test_x)
         r_square = calculate_r_square(output.detach(), test_y).item()
@@ -179,7 +180,6 @@ parser.add_argument('-n', '--cli_num', required=False, type=int,
 out_args = parser.parse_args()
 crypten.init()
 args = Setting()
-torch.manual_seed(args.seed)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 cli_num = out_args.cli_num
 epoch = args.epoch
@@ -201,7 +201,7 @@ with open('./result/result.txt', 'w') as f:
             r_square = test(test_x, test_y, model)
             if r_square > max_r_square:
                 max_r_square = r_square
-                torch.save(models[n].state_dict(),
+                torch.save(model.state_dict(),
                            './result/model_' + str(n + 1) + '.pkl')
         f.write('client_' + str(n + 1) +
                 ' max_r_square: ' + str(round(max_r_square, 3)) + '\n')
