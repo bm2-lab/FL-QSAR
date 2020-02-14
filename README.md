@@ -1,7 +1,7 @@
 # FL-QSAR: an horizontal federated-learning based QSAR platform
 ## Introduction
 FL-QSAR is an horizontal federated-learning based QSAR framework that enables clients to simulate the scenario of _n_ clients with and without HFL. Meanwhile, FL-QSAR can be easily extended to other deep learning algorithms for solving various drug-related learning tasks.  
-Our study has demonstrated the effectiveness of applying HFL in QSAR modeling. (If the paper is published, we will add the link.)
+Our study has demonstrated the effectiveness of applying HFL in QSAR modeling.  
 ## Federated learning simulation
 Dataset is randomly separated into subsets and distributed them to clients, which were then regarded as private data. Clients have the same amount of training data with chemical structure descriptors as features and bioactivities as labels and the same testing data without labels. Suppose that there are n instances in all available training data. Then a client owns a random subset of training data with 1/x · n instances, where x stands for the number of clients. As shown in the figures below, let us take the simulation for 3 clients with and without HFL as an illustration example to demonstrate the process of simulation.  
 ### The simulation of 3 clients with and without HFL
@@ -35,4 +35,8 @@ FL-QSAR can be easily extended to other deep learning algorithms for solving var
  Our example dataset is the METAB dataset in the Kaggle competition (Ma et al., 2015)(https://pubs.acs.org/doi/abs/10.1021/ci500747n). The original datasets can be downloaded from ci500747n_si_002.zip in the Supporting Information section.
  ## Check the results
  You can check the results in the `result` directory after running.  
- The predicted R² for individual client as well as their collaborated one via HFL will be in result/result.txt.  Model for individual client is in model_n.pkl and model for their collaborated one via HFL is in fl_model.pkl.
+ The predicted R² for individual client as well as their collaborated one via HFL will be in result/result.txt.  Model for individual client is in model_n.pkl and model for their collaborated one via HFL is in fl_model.pkl.  
+## Citation  
+Shaoqi Chen, Qi Liu, et al. FL-QSAR: a federated learning based QSAR prototype for collaborative drug discovery. 2020 (Manuscript submitted)  
+## Contacts  
+csq_@tongji.edu.cn or qiliu@tongji.edu.cn
