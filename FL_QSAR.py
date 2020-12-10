@@ -43,7 +43,7 @@ class Net(nn.Module):
 
 
 def normalize(target_array, data_max, data_min):
-    return (target_array - data_max) / (data_max - data_min)
+    return (target_array - data_min) / (data_max - data_min)
 
 
 def logarithmic(target_array):
