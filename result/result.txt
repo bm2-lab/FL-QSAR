@@ -1,4 +1,5 @@
-client_1 max_r_square: 0.575
-client_2 max_r_square: 0.588
-client_3 max_r_square: 0.617
+client_1 max_r_square: 0.601
+client_2 max_r_square: 0.567
+client_3 max_r_square: 0.597
 FL max_r_square: 0.664
+
